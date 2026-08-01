@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-
-const initialProducts = [
-  { title: "Shoe" },
-  { title: "Flip-Flops" },
-  { title: "Hat" },
-  { title: "Shirt" },
-  { title: "Pants" },
-  { title: "Sunglasses" },
-  { title: "Underwear" },
-];
+import { data as initialProducts } from "../../data";
 
 export const useProducts = () => {
   // const [products, setProducts] = useState(null);
