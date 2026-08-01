@@ -3,20 +3,27 @@ import {
   ErrorPage,
   HomePage,
   ShopPage,
+  CartLayout,
 } from "./components/index.jsx";
 
 export const routes = [
   {
     path: "/",
-    element: <HomePage />,
+    element: <CartLayout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "shop",
-    element: <ShopPage />,
-  },
-  {
-    path: "cart",
-    element: <CartPage />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "shop",
+        element: <ShopPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
+      },
+    ],
   },
 ];

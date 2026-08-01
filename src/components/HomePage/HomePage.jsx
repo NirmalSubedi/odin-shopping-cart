@@ -1,6 +1,15 @@
 import styles from "./HomePage.module.css";
+import { useOutletContext } from "react-router";
+import { NavBar } from "../index.jsx";
 
 export const HomePage = () => {
+  const { cart } = useOutletContext();
+
   console.log(styles);
-  return <div>This is the Home page.</div>;
+  return (
+    <>
+      <NavBar {...{ cart }} />
+      <h1>This is the Home page.</h1>
+    </>
+  );
 };
