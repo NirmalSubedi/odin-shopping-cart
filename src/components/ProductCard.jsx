@@ -16,7 +16,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
 
   return (
     <div className="product">
-      <h2 className="product-title">{title}</h2>
+      <h3 className="product-title">{title}</h3>
       <div className="details">
         <p>{description}</p>
         <button

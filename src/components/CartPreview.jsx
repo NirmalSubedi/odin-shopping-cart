@@ -4,5 +4,5 @@ export const CartPreview = ({ cart = [] }) => {
     0,
   );
 
-  return `Cart ${totalItems}`;
+  return `Cart (${totalItems})`;
 };

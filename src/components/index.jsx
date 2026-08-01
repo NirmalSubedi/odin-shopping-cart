@@ -1,7 +1,7 @@
-export { HomePage } from "./HomePage/HomePage.jsx";
-export { ShopPage } from "./ShopPage/ShopPage.jsx";
-export { CartPage } from "./CartPage/CartPage.jsx";
-export { ErrorPage } from "./ErrorPage/ErrorPage.jsx";
+export { HomePage } from "./HomePage.jsx";
+export { ShopPage } from "./ShopPage.jsx";
+export { CartPage } from "./CartPage.jsx";
+export { ErrorPage } from "./ErrorPage.jsx";
 export { ProductCard } from "./ProductCard.jsx";
 export { CartLayout } from "./CartLayout.jsx";
 export { CartPreview } from "./CartPreview.jsx";

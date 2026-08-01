@@ -1,7 +1,7 @@
-import styles from "./ShopPage.module.css";
+import styles from "../styles/ShopPage.module.css";
 import { useOutletContext } from "react-router";
-import { useProducts } from "../hooks/index.jsx";
-import { NavBar, ProductCard } from "../index.jsx";
+import { useProducts } from "./hooks/index.jsx";
+import { NavBar, ProductCard } from "./index.jsx";
 
 export const ShopPage = () => {
   const { products, loading, error } = useProducts();
@@ -30,7 +30,7 @@ export const ShopPage = () => {
       <NavBar {...{ cart }} />
       <h1>This is the Shop page.</h1>
 
-      <p>Trending Today:</p>
+      <h2>Trending Today:</h2>
       {products.map((product) => (
         <ProductCard key={product.id} {...{ product, onAddToCart }} />
       ))}

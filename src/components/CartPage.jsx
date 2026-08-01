@@ -1,6 +1,6 @@
-import styles from "./CartPage.module.css";
+import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
-import { NavBar } from "../NavBar";
+import { NavBar } from "./index.js";
 
 export const CartPage = () => {
   const { cart } = useOutletContext();
