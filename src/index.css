@@ -45,3 +45,32 @@
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 }
+
+input,
+button {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  text-wrap: pretty;
+}
+
+body {
+  margin: 0;
+}

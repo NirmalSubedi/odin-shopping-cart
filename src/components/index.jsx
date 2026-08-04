@@ -6,3 +6,4 @@ export { ProductCard } from "./ProductCard.jsx";
 export { CartLayout } from "./CartLayout.jsx";
 export { CartPreview } from "./CartPreview.jsx";
 export { NavBar } from "./NavBar.jsx";
+export { ProductCounter } from "./ProductCounter.jsx";

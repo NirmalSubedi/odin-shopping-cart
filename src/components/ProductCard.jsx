@@ -1,9 +1,9 @@
+import { MINIMUM_QUANTITY } from "../config.js";
 import { useCounter } from "./hooks/index.jsx";
-
-const MINIMUM_QUANTITY = 1;
+import { ProductCounter } from "./index.jsx";
 
 export const ProductCard = ({ product, onAddToCart }) => {
-  const { title, id, quantity, description, price } = product;
+  const { title, id, quantity, description, price, image } = product;
   const {
     count: currentQuantity,
     setCount: setQuantity,
@@ -16,37 +16,22 @@ export const ProductCard = ({ product, onAddToCart }) => {
 
   return (
     <div className="product">
-      <h3 className="product-title">
-        {title}
-        <em>&nbsp;(${price})</em>
-      </h3>
+      <img
+        src={image}
+        alt=""
+        style={{ maxWidth: "200px", display: "block", width: "100%" }}
+      />
+
       <div className="details">
+        <h3 className="product-title">
+          {title}
+          <em>&nbsp;(${price})</em>
+        </h3>
         <p>{description}</p>
 
-        <label htmlFor={`product${id}-quantity`}>Quantity</label>
-
-        <button
-          type="button"
-          aria-label="Decrease Quantity"
-          disabled={currentQuantity === MINIMUM_QUANTITY}
-          onClick={() => currentQuantity > MINIMUM_QUANTITY && decrease()}
-        >
-          -
-        </button>
-
-        <input
-          type="number"
-          name={`product${id}-quantity`}
-          id={`product${id}-quantity`}
-          value={currentQuantity}
-          min={1}
-          aria-live="polite"
-          onChange={handleChange}
+        <ProductCounter
+          {...{ id, currentQuantity, increase, decrease, handleChange }}
         />
-
-        <button type="button" aria-label="Increase Quantity" onClick={increase}>
-          +
-        </button>
 
         <button
           type="button"
