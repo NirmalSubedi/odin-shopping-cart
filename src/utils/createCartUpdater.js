@@ -8,5 +8,8 @@ export const createCartUpdater =
     const hasProduct = productIndex >= 0;
     if (hasProduct) {
       setProducts(products.with(productIndex, updatedProduct));
-    }
+    } else
+      throw new ReferenceError(
+        `Product to update not found with the corresponding id(${productToUpdate.id}) in products(${products}).`,
+      );
   };
