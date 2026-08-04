@@ -3,9 +3,20 @@ import { useState } from "react";
 export const useCounter = (startCount) => {
   const [count, setCount] = useState(startCount);
 
-  const increase = () => setCount(count + 1);
-  const decrease = () => setCount(count - 1);
-  const reset = () => setCount(startCount);
+  const increaseCount = () => {
+    const nextCount = count + 1;
+    setCount(nextCount);
+    return nextCount;
+  };
+  const decreaseCount = () => {
+    const nextCount = count - 1;
+    setCount(nextCount);
+    return nextCount;
+  };
+  const resetCount = () => {
+    setCount(startCount);
+    return startCount;
+  };
 
-  return { count, increase, decrease, reset, setCount };
+  return { count, increaseCount, decreaseCount, resetCount, setCount };
 };
