@@ -31,9 +31,11 @@ export const ShopPage = () => {
       <h1>This is the Shop page.</h1>
 
       <h2>Trending Today:</h2>
-      {products.map((product) => (
-        <ProductCard key={product.id} {...{ product, onAddToCart }} />
-      ))}
+      <main>
+        {products.map((product) => (
+          <ProductCard key={product.id} {...{ product, onAddToCart }} />
+        ))}
+      </main>
     </>
   );
 };
