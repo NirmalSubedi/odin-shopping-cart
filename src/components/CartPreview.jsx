@@ -1,5 +1,5 @@
-export const CartPreview = ({ cart = [] }) => {
-  const totalItems = cart.reduce(
+export const CartPreview = ({ products = [] }) => {
+  const totalItems = products.reduce(
     (sum, product) => (product.quantity ?? 0) + sum,
     0,
   );

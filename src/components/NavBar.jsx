@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import { CartPreview } from "./index.jsx";
 
-export const NavBar = ({ cart }) => {
+export const NavBar = ({ products }) => {
   const styleNavLink = ({ isActive }) => ({
     color: isActive ? "red" : "",
   });
@@ -23,7 +23,7 @@ export const NavBar = ({ cart }) => {
         </li>
         <li>
           <NavLink to="/cart" style={styleNavLink}>
-            <CartPreview {...{ cart }} />
+            <CartPreview {...{ products }} />
           </NavLink>
         </li>
       </ul>

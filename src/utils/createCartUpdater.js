@@ -1,12 +1,12 @@
 export const createCartUpdater =
-  (cart, setCart) => (addedProduct, quantity) => {
-    addedProduct.quantity = quantity;
+  (products, setProducts) => (productToUpdate, quantity) => {
+    const updatedProduct = { ...productToUpdate, quantity };
 
-    const productIndex = cart.findIndex(
-      (product) => product.id === addedProduct.id,
+    const productIndex = products.findIndex(
+      (product) => product.id === updatedProduct.id,
     );
-
-    productIndex >= 0
-      ? setCart(cart.with(productIndex, addedProduct))
-      : setCart([...cart, addedProduct]);
+    const hasProduct = productIndex >= 0;
+    if (hasProduct) {
+      setProducts(products.with(productIndex, updatedProduct));
+    }
   };

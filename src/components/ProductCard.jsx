@@ -4,9 +4,9 @@ import { ProductCounter } from "./index.jsx";
 import { getValidProductQuantity } from "../utils/index.js";
 
 export const ProductCard = ({ product, onAddToCart }) => {
-  const { title, id, quantity, description, image } = product;
+  const { title, id, description, image, quantity } = product;
   const { count, setCount, increaseCount, decreaseCount } = useCounter(
-    quantity ?? MINIMUM_QUANTITY,
+    quantity || MINIMUM_QUANTITY,
   );
 
   const onQuantityIncrease = () => increaseCount();

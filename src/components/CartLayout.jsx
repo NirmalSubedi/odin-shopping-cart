@@ -1,8 +1,13 @@
-import { useState } from "react";
 import { Outlet } from "react-router";
+import { useProducts } from "./hooks/index.jsx";
 
 export const CartLayout = () => {
-  const [cart, setCart] = useState([]);
+  const { products, setProducts, productsError, productsLoading } =
+    useProducts();
 
-  return <Outlet context={{ cart, setCart }} />;
+  return (
+    <Outlet
+      context={{ products, setProducts, productsError, productsLoading }}
+    />
+  );
 };

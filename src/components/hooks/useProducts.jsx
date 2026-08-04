@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { data as initialProducts } from "../../data";
+import { cleanProductsData } from "../../utils/index.js";
 
 export const useProducts = () => {
   // const [products, setProducts] = useState(null);
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState(cleanProductsData(initialProducts));
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +16,7 @@ export const useProducts = () => {
         .then((response) => response.json())
         .then((response) => {
           if (!response.ok) throw new Error(`HTTP Error- ${response.status}`);
-          setProducts(response);
+          setProducts(cleanProductsData(response));
         })
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
@@ -24,5 +25,5 @@ export const useProducts = () => {
     return () => controller.abort();
   }, []);
 
-  return { loading, error, products };
+  return { loading, error, products, setProducts };
 };
