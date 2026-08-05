@@ -17,24 +17,38 @@ export const CartPage = () => {
   };
   const onCartUpdate = createCartUpdater(products, setProducts);
 
+  const productsInCart = products.filter((product) => product.quantity > 0);
+  const hasProductsInCart = productsInCart.length > 0;
+
   console.log(styles);
   return (
     <>
       <NavBar {...{ products }} />
-      <h1>This is the Cart page.</h1>
-      <main>
-        {products
-          .filter((product) => product.quantity > 0)
-          .map((product) => (
-            <CartProduct
-              key={product.id}
-              {...{
-                product,
-                onCartUpdate,
-                onProductRemove,
-              }}
-            />
-          ))}
+      <main style={{ textAlign: "center" }}>
+        {!hasProductsInCart && (
+          <>
+            <h1>Shopping cart is empty..🍃</h1>{" "}
+            <p>
+              ..Fill up your shopping cart at the <strong>Shop</strong> page.
+            </p>
+          </>
+        )}
+
+        {hasProductsInCart && (
+          <>
+            <h1>Shopping Cart</h1>
+            {productsInCart.map((product) => (
+              <CartProduct
+                key={product.id}
+                {...{
+                  product,
+                  onCartUpdate,
+                  onProductRemove,
+                }}
+              />
+            ))}
+          </>
+        )}
       </main>
     </>
   );

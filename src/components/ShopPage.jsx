@@ -22,9 +22,7 @@ export const ShopPage = () => {
   return (
     <>
       <NavBar {...{ products }} />
-      <h1>This is the Shop page.</h1>
-
-      <h2>Trending Today:</h2>
+      <h1>Products of the Week:</h1>
       <main>
         {products.map((product) => {
           return <ProductCard key={product.id} {...{ product, onAddToCart }} />;

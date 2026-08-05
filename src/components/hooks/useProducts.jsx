@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { cleanProductsData } from "../../utils/index.js";
 
 export const useProducts = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [productsError, setError] = useState(null);
   const [productsLoading, setLoading] = useState(true);
 
