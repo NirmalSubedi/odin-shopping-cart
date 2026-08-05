@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
-import { data as initialProducts } from "../../data";
 import { cleanProductsData } from "../../utils/index.js";
 
 export const useProducts = () => {
-  // const [products, setProducts] = useState(null);
-  const [products, setProducts] = useState(cleanProductsData(initialProducts));
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState(null);
+  const [productsError, setError] = useState(null);
+  const [productsLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
 
     (async function getProducts() {
-      fetch("https://example.com", { signal: controller.signal })
-        .then((response) => response.json())
+      fetch("https://fakestoreapi.com/products", { signal: controller.signal })
         .then((response) => {
-          if (!response.ok) throw new Error(`HTTP Error- ${response.status}`);
-          setProducts(cleanProductsData(response));
+          if (!response.ok) throw new Error(`HTTP Error - ${response.status}`);
+          return response.json();
         })
+        .then((response) => setProducts(cleanProductsData(response)))
         .catch((error) => setError(error.message))
         .finally(() => setLoading(false));
     })();
 
-    return () => controller.abort();
+    return () => controller.abort("Fetch cancelled by cleanup callback.");
   }, []);
 
-  return { loading, error, products, setProducts };
+  return { productsLoading, productsError, products, setProducts };
 };
