@@ -1,6 +1,6 @@
 import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
-import { CartProduct, NavBar } from "./index.jsx";
+import { CartProduct } from "./index.jsx";
 import { createCartUpdater } from "../utils/index.js";
 
 export const CartPage = () => {
@@ -23,7 +23,6 @@ export const CartPage = () => {
   console.log(styles);
   return (
     <>
-      <NavBar {...{ products }} />
       <main style={{ textAlign: "center" }}>
         {!hasProductsInCart && (
           <>

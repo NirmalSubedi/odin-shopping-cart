@@ -1,6 +1,6 @@
 import styles from "../styles/ShopPage.module.css";
 import { useOutletContext } from "react-router";
-import { NavBar, ProductCard } from "./index.jsx";
+import { ProductCard } from "./index.jsx";
 import { createCartUpdater } from "../utils/index.js";
 
 export const ShopPage = () => {
@@ -21,7 +21,6 @@ export const ShopPage = () => {
 
   return (
     <>
-      <NavBar {...{ products }} />
       <h1>Products of the Week:</h1>
       <main>
         {products.map((product) => {

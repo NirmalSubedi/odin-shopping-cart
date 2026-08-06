@@ -1,14 +1,10 @@
 import styles from "../styles/HomePage.module.css";
-import { useOutletContext } from "react-router";
-import { NavBar } from "./index.jsx";
 
 export const HomePage = () => {
-  const { products } = useOutletContext();
-
   console.log(styles);
+
   return (
     <>
-      <NavBar {...{ products }} />
       <main style={{ textAlign: "center" }}>
         <h1>Welcome! 👋</h1>
         <p>To a mock online store 🏪 with a virtual shopping cart 🛒.</p>
