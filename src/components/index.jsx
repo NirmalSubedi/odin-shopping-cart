@@ -3,7 +3,7 @@ export { ShopPage } from "./ShopPage.jsx";
 export { CartPage } from "./CartPage.jsx";
 export { ErrorPage } from "./ErrorPage.jsx";
 export { ProductCard } from "./ProductCard.jsx";
-export { CartLayout } from "./CartLayout.jsx";
+export { App } from "./App.jsx";
 export { CartPreview } from "./CartPreview.jsx";
 export { NavBar } from "./NavBar.jsx";
 export { ProductCounter } from "./ProductCounter.jsx";

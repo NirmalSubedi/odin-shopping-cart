@@ -3,13 +3,13 @@ import {
   ErrorPage,
   HomePage,
   ShopPage,
-  CartLayout,
+  App,
 } from "./components/index.jsx";
 
 export const routes = [
   {
     path: "/",
-    element: <CartLayout />,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
