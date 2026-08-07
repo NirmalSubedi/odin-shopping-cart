@@ -74,3 +74,16 @@ p {
 body {
   margin: 0;
 }
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset;
+}
