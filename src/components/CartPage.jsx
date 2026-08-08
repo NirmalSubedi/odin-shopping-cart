@@ -26,7 +26,9 @@ export const CartPage = () => {
       <main style={{ textAlign: "center" }}>
         {!hasProductsInCart && (
           <>
-            <h1>Shopping cart is empty..🍃</h1>{" "}
+            <h1>
+              Shopping cart is empty <span aria-hidden="true">🍃</span>..
+            </h1>
             <p>
               ..Fill up your shopping cart at the <strong>Shop</strong> page.
             </p>

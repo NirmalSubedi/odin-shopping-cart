@@ -6,8 +6,13 @@ export const HomePage = () => {
   return (
     <>
       <main style={{ textAlign: "center" }}>
-        <h1>Welcome! 👋</h1>
-        <p>To a mock online store 🏪 with a virtual shopping cart 🛒.</p>
+        <h1>
+          Welcome! <span aria-hidden="true">👋</span>
+        </h1>
+        <p>
+          To a mock online store <span aria-hidden="true">🏪</span> with a
+          virtual shopping cart <span aria-hidden="true">🛒</span>.
+        </p>
         <h2>Get Started</h2>
         <p>
           By adding items into your shopping cart in the <strong>Shop</strong>{" "}
