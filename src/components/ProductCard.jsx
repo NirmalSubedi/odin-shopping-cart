@@ -10,13 +10,12 @@ export const ProductCard = ({ product, onAddToCart }) => {
   );
 
   const onQuantityIncrease = () => increaseCount();
-  const onQuantityDecrease = () => count > MINIMUM_QUANTITY && decreaseCount();
-  const onQuantityChange = (e) => {
-    setCount(getValidProductQuantity(e));
-  };
+  const onQuantityDecrease = () =>
+    count > MINIMUM_QUANTITY ? decreaseCount() : MINIMUM_QUANTITY;
+  const onQuantityChange = (e) => setCount(getValidProductQuantity(e));
 
   return (
-    <div className="product">
+    <section className="product">
       <img
         src={image}
         alt=""
@@ -32,12 +31,13 @@ export const ProductCard = ({ product, onAddToCart }) => {
           onQuantityIncrease,
           onQuantityDecrease,
           onQuantityChange,
+          minQuantity: MINIMUM_QUANTITY,
         }}
       />
 
       <button type="button" onClick={() => onAddToCart(product, count)}>
         Add To Cart
       </button>
-    </div>
+    </section>
   );
 };
