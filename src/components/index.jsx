@@ -8,3 +8,5 @@ export { CartPreview } from "./CartPreview.jsx";
 export { NavBar } from "./NavBar.jsx";
 export { ProductCounter } from "./ProductCounter.jsx";
 export { CartProduct } from "./CartProduct.jsx";
+export { NumberInput } from "./NumberInput.jsx";
+export { LiveRegion } from "./LiveRegion.jsx";
