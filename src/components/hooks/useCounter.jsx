@@ -1,22 +1,34 @@
 import { useState } from "react";
 
 export const useCounter = (startCount) => {
-  const [count, setCount] = useState(startCount);
+  const [count, setInternalCount] = useState(startCount);
 
+  const setCount = (val) => {
+    const nextCount = val;
+    setInternalCount(nextCount);
+    return nextCount;
+  };
   const increaseCount = () => {
     const nextCount = count + 1;
-    setCount(nextCount);
+    setInternalCount(nextCount);
     return nextCount;
   };
   const decreaseCount = () => {
     const nextCount = count - 1;
-    setCount(nextCount);
+    setInternalCount(nextCount);
     return nextCount;
   };
   const resetCount = () => {
-    setCount(startCount);
-    return startCount;
+    const nextCount = startCount;
+    setInternalCount(nextCount);
+    return nextCount;
   };
 
-  return { count, increaseCount, decreaseCount, resetCount, setCount };
+  return {
+    count,
+    increaseCount,
+    decreaseCount,
+    resetCount,
+    setCount,
+  };
 };
