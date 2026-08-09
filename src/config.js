@@ -1,1 +1,2 @@
 export const MINIMUM_QUANTITY = 1;
+export const ANNOUNCEMENT_UPDATE_DELAY = 200;

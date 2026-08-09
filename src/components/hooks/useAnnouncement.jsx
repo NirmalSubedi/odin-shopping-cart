@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ANNOUNCEMENT_UPDATE_DELAY } from "../../config";
 
 export const useAnnouncement = (initialMessage) => {
   const [announcement, setAnnouncement] = useState(initialMessage);
@@ -11,7 +12,7 @@ export const useAnnouncement = (initialMessage) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnnouncement(message);
-    }, 200);
+    }, ANNOUNCEMENT_UPDATE_DELAY);
 
     return () => clearTimeout(timer);
   }, [message]);
