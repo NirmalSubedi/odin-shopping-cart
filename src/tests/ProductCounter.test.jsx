@@ -3,7 +3,6 @@ import { expect, it, vi } from "vitest";
 import { ProductCounter } from "../components";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
-import { ANNOUNCEMENT_UPDATE_DELAY } from "../config";
 
 it("displays the currentQuantity prop as quantity input value", () => {
   render(<ProductCounter {...{ currentQuantity: 2 }} />);
@@ -50,9 +49,6 @@ it("announces the updated quantity after input change", async () => {
 
   await user.clear(input);
   await user.type(input, "123");
-  await new Promise((resolve) =>
-    setTimeout(resolve, ANNOUNCEMENT_UPDATE_DELAY),
-  );
 
   expect(screen.getByTestId("live-region")).toHaveTextContent(
     /current quantity is 123/i,
@@ -91,9 +87,6 @@ it("announces the updated quantity after decrease button click", async () => {
   expect(liveRegion).toBeEmptyDOMElement();
 
   await user.click(decreaseBtn);
-  await new Promise((resolve) =>
-    setTimeout(resolve, ANNOUNCEMENT_UPDATE_DELAY),
-  );
 
   expect(screen.getByTestId("live-region")).toHaveTextContent(
     /current quantity is 0/i,
@@ -134,9 +127,6 @@ it("announces the updated quantity after increase button click", async () => {
   expect(liveRegion).toBeEmptyDOMElement();
 
   await user.click(increaseBtn);
-  await new Promise((resolve) =>
-    setTimeout(resolve, ANNOUNCEMENT_UPDATE_DELAY),
-  );
 
   expect(screen.getByTestId("live-region")).toHaveTextContent(
     /current quantity is 2/i,
