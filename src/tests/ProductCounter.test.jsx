@@ -4,6 +4,15 @@ import { ProductCounter } from "../components";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
+vi.mock("../components/LiveRegion.jsx", () => ({
+  LiveRegion: ({ children, announcement }) => (
+    <>
+      {children}
+      <span data-testid="live-region">{announcement}</span>
+    </>
+  ),
+}));
+
 it("displays the currentQuantity prop as quantity input value", () => {
   render(<ProductCounter {...{ currentQuantity: 2 }} />);
 

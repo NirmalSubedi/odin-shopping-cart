@@ -1,6 +1,5 @@
-import { NumberInput } from "./NumberInput.jsx";
+import { NumberInput, LiveRegion } from "./index.jsx";
 import { useAnnouncement } from "./hooks/index.jsx";
-import { LiveRegion } from "./LiveRegion.jsx";
 
 export const ProductCounter = ({
   id,
