@@ -4,30 +4,30 @@ import { ProductCounter } from "../components";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
-vi.mock("../components/LiveRegion.jsx", () => ({
-  LiveRegion: ({ children, announcement }) => (
-    <>
-      {children}
-      <span data-testid="live-region">{announcement}</span>
-    </>
-  ),
-}));
+const id = 1;
+const labelText = /^quantity$/i;
 
-it("displays the currentQuantity prop as quantity input value", () => {
+it("shows quantity input label", () => {
+  render(<ProductCounter {...{ id }} />);
+
+  expect(screen.getByText(labelText)).toBeInTheDocument();
+});
+
+it("links quantity label to quantity input", () => {
+  const inputIdentifier = `product${id}-quantity`;
+  render(<ProductCounter {...{ id }} />);
+
+  expect(screen.getByText(labelText)).toHaveAttribute("for", inputIdentifier);
+  expect(screen.getByLabelText(labelText)).toHaveAttribute(
+    "id",
+    inputIdentifier,
+  );
+});
+
+it("shows the currentQuantity prop as quantity input value", () => {
   render(<ProductCounter {...{ currentQuantity: 2 }} />);
 
   expect(screen.getByRole("spinbutton", { name: /quantity/i })).toHaveValue(2);
-});
-
-it("calls onQuantityChange prop for quantity input change event", async () => {
-  const onQuantityChange = vi.fn();
-  const user = userEvent.setup();
-
-  render(<ProductCounter {...{ onQuantityChange }} />);
-
-  await user.type(screen.getByRole("spinbutton", { name: /quantity/i }), "1");
-
-  expect(onQuantityChange).toHaveBeenCalled();
 });
 
 it("disables decrease button when currentQuantity is same value as minimum quantity", () => {
@@ -45,6 +45,48 @@ it("does not disable decrease button when minimum quantity and current quantity 
     screen.getByRole("button", { name: /decrease quantity/i }),
   ).not.toBeDisabled();
 });
+
+it("calls onQuantityChange prop for quantity input change event", async () => {
+  const onQuantityChange = vi.fn();
+  const user = userEvent.setup();
+
+  render(<ProductCounter {...{ onQuantityChange }} />);
+
+  await user.type(screen.getByRole("spinbutton", { name: /quantity/i }), "1");
+
+  expect(onQuantityChange).toHaveBeenCalled();
+});
+
+it("calls onQuantityDecrease prop when pressing the decrease button", async () => {
+  const onQuantityDecrease = vi.fn();
+
+  render(<ProductCounter {...{ onQuantityDecrease }} />);
+
+  await userEvent.setup().click(screen.getByText("-"));
+
+  expect(onQuantityDecrease).toHaveBeenCalledOnce();
+});
+
+it("calls onQuantityIncrease prop when pressing the increase button", async () => {
+  const onQuantityIncrease = vi.fn();
+
+  render(<ProductCounter {...{ onQuantityIncrease }} />);
+
+  await userEvent
+    .setup()
+    .click(screen.getByRole("button", { name: /increase quantity/i }));
+
+  expect(onQuantityIncrease).toHaveBeenCalledOnce();
+});
+
+vi.mock("../components/LiveRegion.jsx", () => ({
+  LiveRegion: ({ children, announcement }) => (
+    <>
+      {children}
+      <span data-testid="live-region">{announcement}</span>
+    </>
+  ),
+}));
 
 it("announces the updated quantity after input change", async () => {
   function Wrapper() {
@@ -70,16 +112,6 @@ it("announces the updated quantity after input change", async () => {
   expect(screen.getByTestId("live-region")).toHaveTextContent(
     /current quantity is 123/i,
   );
-});
-
-it("calls onQuantityDecrease prop when pressing the decrease button", async () => {
-  const onQuantityDecrease = vi.fn();
-
-  render(<ProductCounter {...{ onQuantityDecrease }} />);
-
-  await userEvent.setup().click(screen.getByText("-"));
-
-  expect(onQuantityDecrease).toHaveBeenCalledOnce();
 });
 
 it("announces the updated quantity after decrease button click", async () => {
@@ -108,18 +140,6 @@ it("announces the updated quantity after decrease button click", async () => {
   expect(screen.getByTestId("live-region")).toHaveTextContent(
     /current quantity is 0/i,
   );
-});
-
-it("calls onQuantityIncrease prop when pressing the increase button", async () => {
-  const onQuantityIncrease = vi.fn();
-
-  render(<ProductCounter {...{ onQuantityIncrease }} />);
-
-  await userEvent
-    .setup()
-    .click(screen.getByRole("button", { name: /increase quantity/i }));
-
-  expect(onQuantityIncrease).toHaveBeenCalledOnce();
 });
 
 it("announces the updated quantity after increase button click", async () => {
