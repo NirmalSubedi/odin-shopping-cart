@@ -21,12 +21,20 @@ it("calls onQuantityChange prop for quantity input change event", async () => {
   expect(onQuantityChange).toHaveBeenCalled();
 });
 
-it("disables decrease button when currentQuantity is minimum quantity", () => {
+it("disables decrease button when currentQuantity is same value as minimum quantity", () => {
   render(<ProductCounter {...{ currentQuantity: 1, minQuantity: 1 }} />);
 
   expect(
     screen.getByRole("button", { name: /decrease quantity/i }),
   ).toBeDisabled();
+});
+
+it("does not disable decrease button when minimum quantity and current quantity are undefined", () => {
+  render(<ProductCounter />);
+
+  expect(
+    screen.getByRole("button", { name: /decrease quantity/i }),
+  ).not.toBeDisabled();
 });
 
 it("announces the updated quantity after input change", async () => {
@@ -58,7 +66,7 @@ it("announces the updated quantity after input change", async () => {
 it("calls onQuantityDecrease prop when pressing the decrease button", async () => {
   const onQuantityDecrease = vi.fn();
 
-  render(<ProductCounter {...{ currentQuantity: 2, onQuantityDecrease }} />);
+  render(<ProductCounter {...{ onQuantityDecrease }} />);
 
   await userEvent.setup().click(screen.getByText("-"));
 

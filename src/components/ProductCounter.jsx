@@ -22,7 +22,7 @@ export const ProductCounter = ({
       <button
         type="button"
         aria-label="Decrease Quantity"
-        disabled={currentQuantity === minQuantity}
+        disabled={currentQuantity <= minQuantity}
         onClick={(e) => {
           const nextQuantity = onQuantityDecrease(e);
           onAnnouncementUpdate(nextQuantity);
