@@ -79,15 +79,6 @@ it("calls onQuantityIncrease prop when pressing the increase button", async () =
   expect(onQuantityIncrease).toHaveBeenCalledOnce();
 });
 
-vi.mock("../components/LiveRegion.jsx", () => ({
-  LiveRegion: ({ children, announcement }) => (
-    <>
-      {children}
-      <span data-testid="live-region">{announcement}</span>
-    </>
-  ),
-}));
-
 it("announces the updated quantity after input change", async () => {
   function Wrapper() {
     const [currentQuantity, setCurrentQuantity] = useState(1);
@@ -101,7 +92,7 @@ it("announces the updated quantity after input change", async () => {
   render(<Wrapper />);
 
   const user = userEvent.setup();
-  const liveRegion = screen.getByTestId("live-region");
+  const liveRegion = screen.getByTestId("quantity-live-region");
   const input = screen.getByRole("spinbutton", { name: /quantity/i });
 
   expect(liveRegion).toBeEmptyDOMElement();
@@ -109,7 +100,7 @@ it("announces the updated quantity after input change", async () => {
   await user.clear(input);
   await user.type(input, "123");
 
-  expect(screen.getByTestId("live-region")).toHaveTextContent(
+  expect(screen.getByTestId("quantity-live-region")).toHaveTextContent(
     /current quantity is 123/i,
   );
 });
@@ -128,7 +119,7 @@ it("announces the updated quantity after decrease button click", async () => {
   render(<Wrapper />);
 
   const user = userEvent.setup();
-  const liveRegion = screen.getByTestId("live-region");
+  const liveRegion = screen.getByTestId("quantity-live-region");
   const decreaseBtn = screen.getByRole("button", {
     name: /decrease quantity/i,
   });
@@ -137,7 +128,7 @@ it("announces the updated quantity after decrease button click", async () => {
 
   await user.click(decreaseBtn);
 
-  expect(screen.getByTestId("live-region")).toHaveTextContent(
+  expect(screen.getByTestId("quantity-live-region")).toHaveTextContent(
     /current quantity is 0/i,
   );
 });
@@ -156,7 +147,7 @@ it("announces the updated quantity after increase button click", async () => {
   render(<Wrapper />);
 
   const user = userEvent.setup();
-  const liveRegion = screen.getByTestId("live-region");
+  const liveRegion = screen.getByTestId("quantity-live-region");
   const increaseBtn = screen.getByRole("button", {
     name: /increase quantity/i,
   });
@@ -165,7 +156,7 @@ it("announces the updated quantity after increase button click", async () => {
 
   await user.click(increaseBtn);
 
-  expect(screen.getByTestId("live-region")).toHaveTextContent(
+  expect(screen.getByTestId("quantity-live-region")).toHaveTextContent(
     /current quantity is 2/i,
   );
 });

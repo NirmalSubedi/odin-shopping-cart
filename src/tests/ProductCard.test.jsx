@@ -86,3 +86,24 @@ it("calls onAddToCart callback prop on add to cart button click", async () => {
   await user.click(addToCartBtn);
   expect(onAddToCart).toHaveBeenCalledOnce();
 });
+
+it("announces the product title and the quantity being added to cart on add to cart button click", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <ProductCard
+      {...{ product: { title: "Apple", quantity: 2 }, onAddToCart: vi.fn() }}
+    />,
+  );
+
+  const liveRegion = screen.getByTestId("cart-live-region");
+  const addToCartBtn = screen.getByRole("button", { name: /add to cart/i });
+
+  expect(liveRegion).toBeEmptyDOMElement();
+
+  await user.click(addToCartBtn);
+
+  expect(screen.getByTestId("cart-live-region")).toHaveTextContent(
+    /added 2 apple to cart/i,
+  );
+});

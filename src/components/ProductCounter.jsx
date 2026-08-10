@@ -30,7 +30,7 @@ export const ProductCounter = ({
         -
       </button>
 
-      <LiveRegion {...{ announcement }}>
+      <LiveRegion {...{ announcement, testId: "quantity-live-region" }}>
         <NumberInput
           {...{
             name: `product${id}-quantity`,

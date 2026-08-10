@@ -1,6 +1,6 @@
 import { MINIMUM_QUANTITY } from "../config.js";
-import { useCounter } from "./hooks/index.jsx";
-import { ProductCounter } from "./index.jsx";
+import { useAnnouncement, useCounter } from "./hooks/index.jsx";
+import { LiveRegion, ProductCounter } from "./index.jsx";
 import { getValidProductQuantity } from "../utils/index.js";
 
 export const ProductCard = ({ product, onAddToCart }) => {
@@ -8,6 +8,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
   const { count, setCount, increaseCount, decreaseCount } = useCounter(
     quantity || MINIMUM_QUANTITY,
   );
+  const { announcement, updateAnnouncement } = useAnnouncement();
 
   const onQuantityIncrease = () => increaseCount();
   const onQuantityDecrease = () =>
@@ -34,10 +35,17 @@ export const ProductCard = ({ product, onAddToCart }) => {
           minQuantity: MINIMUM_QUANTITY,
         }}
       />
-
-      <button type="button" onClick={() => onAddToCart(product, count)}>
-        Add To Cart
-      </button>
+      <LiveRegion {...{ announcement, testId: "cart-live-region" }}>
+        <button
+          type="button"
+          onClick={() => {
+            updateAnnouncement(`Added ${quantity} ${title} to cart`);
+            onAddToCart(product, count);
+          }}
+        >
+          Add To Cart
+        </button>
+      </LiveRegion>
     </section>
   );
 };
