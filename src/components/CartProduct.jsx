@@ -1,3 +1,4 @@
+import { MINIMUM_QUANTITY } from "../config.js";
 import { getValidProductQuantity } from "../utils/index.js";
 import { useCounter } from "./hooks/index.jsx";
 import { ProductCounter } from "./index.jsx";
@@ -32,10 +33,15 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
           onQuantityDecrease,
           onQuantityIncrease,
           onQuantityChange,
+          minQuantity: MINIMUM_QUANTITY,
         }}
       />
 
-      <button type="button" onClick={() => onProductRemove(product)}>
+      <button
+        aria-label="Remove product From Cart"
+        type="button"
+        onClick={() => onProductRemove(product)}
+      >
         Remove Item
       </button>
     </div>
