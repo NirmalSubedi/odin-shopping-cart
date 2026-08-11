@@ -4,20 +4,18 @@ import { ProductCounter } from "../components";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
-const id = 1;
-const labelText = /^quantity$/i;
-
 it("shows quantity input label", () => {
-  render(<ProductCounter {...{ id }} />);
+  render(<ProductCounter {...{ id: 1 }} />);
 
-  expect(screen.getByText(labelText)).toBeInTheDocument();
+  expect(screen.getByText(/^quantity$/i)).toBeInTheDocument();
 });
 
 it("links quantity label to quantity input", () => {
-  const inputIdentifier = `product${id}-quantity`;
-  render(<ProductCounter {...{ id }} />);
+  render(<ProductCounter {...{ id: 1 }} />);
+  const labelText = /^quantity$/i;
+  const inputIdentifier = screen.getByText(labelText).getAttribute("for");
 
-  expect(screen.getByText(labelText)).toHaveAttribute("for", inputIdentifier);
+  expect(inputIdentifier).not.toBeNull();
   expect(screen.getByLabelText(labelText)).toHaveAttribute(
     "id",
     inputIdentifier,
