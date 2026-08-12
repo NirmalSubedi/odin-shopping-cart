@@ -37,7 +37,7 @@ export const CartPage = () => {
 
         {hasProductsInCart && (
           <>
-            <h1>Shopping Cart</h1>
+            <h1>Products In Shopping Cart:</h1>
             {productsInCart.map((product) => (
               <CartProduct
                 key={product.id}
