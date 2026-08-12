@@ -1,7 +1,10 @@
 import { Link } from "react-router";
 import styles from "../styles/ErrorPage.module.css";
+import { useFocus } from "./hooks";
 
 export const ErrorPage = () => {
+  useFocus();
+
   console.log(styles);
 
   return (

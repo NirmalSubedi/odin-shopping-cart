@@ -75,6 +75,10 @@ body {
   margin: 0;
 }
 
+h1:focus {
+  outline: none;
+}
+
 .sr-only {
   width: 1px;
   height: 1px;
