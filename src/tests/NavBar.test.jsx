@@ -40,7 +40,7 @@ it("shows shop link", () => {
   expect(link).toHaveAttribute("href", "/cart");
 });
 
-it("shows total items in cart", () => {
+it("shows total products in cart", () => {
   const products = [{ quantity: 1 }, { quantity: 2 }, { quantity: 3 }];
   render(
     <MemoryRouter>
@@ -52,7 +52,7 @@ it("shows total items in cart", () => {
   expect(link).toContainAnyByText(/6/);
 });
 
-it("shows 0 total items in cart when empty", () => {
+it("shows 0 total products in cart when empty", () => {
   const products = [];
   render(
     <MemoryRouter>

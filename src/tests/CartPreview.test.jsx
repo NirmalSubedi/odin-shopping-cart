@@ -8,7 +8,7 @@ it("shows cart with '0' value when empty", () => {
   expect(screen.getByText("Cart (0)")).toBeInTheDocument();
 });
 
-it("shows cart with value 1 for one item in cart", () => {
+it("shows cart with value 1 for one product in cart", () => {
   const products = [{ quantity: 1 }];
 
   render(<CartPreview {...{ products }} />);
