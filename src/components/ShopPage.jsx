@@ -2,8 +2,10 @@ import styles from "../styles/ShopPage.module.css";
 import { useOutletContext } from "react-router";
 import { ProductCard } from "./index.jsx";
 import { createCartUpdater } from "../utils/index.js";
+import { useFocus } from "./hooks/useFocus.jsx";
 
 export const ShopPage = () => {
+  useFocus();
   const { products, setProducts, productsError, productsLoading } =
     useOutletContext();
 

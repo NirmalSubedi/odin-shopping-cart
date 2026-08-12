@@ -2,8 +2,10 @@ import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
 import { CartProduct } from "./index.jsx";
 import { createCartUpdater } from "../utils/index.js";
+import { useFocus } from "./hooks/useFocus.jsx";
 
 export const CartPage = () => {
+  useFocus();
   const { products, setProducts } = useOutletContext();
 
   const onProductRemove = (productToRemove) => {

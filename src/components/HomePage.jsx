@@ -1,7 +1,9 @@
 import styles from "../styles/HomePage.module.css";
+import { useFocus } from "./hooks";
 
 export const HomePage = () => {
   console.log(styles);
+  useFocus();
 
   return (
     <>
