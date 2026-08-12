@@ -42,7 +42,7 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
         type="button"
         onClick={() => onProductRemove(product)}
       >
-        Remove Item
+        Remove Product
       </button>
     </div>
   );

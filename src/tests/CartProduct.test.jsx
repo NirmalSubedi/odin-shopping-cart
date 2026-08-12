@@ -86,7 +86,7 @@ it("does not call onCartUpdate on quantity decrease when quantity is 1", async (
   expect(onCartUpdate).not.toHaveBeenCalled();
 });
 
-it("calls onProductRemove on remove item with correct arguments", async () => {
+it("calls onProductRemove on remove product with correct arguments", async () => {
   const onProductRemove = vi.fn();
   const user = userEvent.setup();
   const product = { quantity: "200", title: "apple" };
