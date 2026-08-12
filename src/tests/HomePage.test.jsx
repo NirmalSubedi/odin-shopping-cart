@@ -19,5 +19,13 @@ it("shows instructions", () => {
 
   expect(screen.getByText(/get started/i)).toBeInTheDocument();
   expect(screen.getByText(/by adding/i)).toBeInTheDocument();
-  expect(screen.getByText(/or adjusting/i)).toBeInTheDocument();
+  expect(screen.getByText(/then adjusting/i)).toBeInTheDocument();
+});
+
+it("h1 has accessible description", () => {
+  render(<HomePage />);
+
+  expect(
+    screen.getByRole("heading", { level: 1, name: /welcome/i }),
+  ).toHaveAccessibleDescription(/to a mock online store/i);
 });
