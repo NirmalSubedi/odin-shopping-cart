@@ -4,7 +4,7 @@ import { useCounter } from "./hooks/index.jsx";
 import { ProductCounter } from "./index.jsx";
 
 export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
-  const { quantity, id, image } = product;
+  const { quantity, id, image, title } = product;
   const { count, increaseCount, decreaseCount, setCount } =
     useCounter(quantity);
 
@@ -24,7 +24,7 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
 
   return (
     <div className="product">
-      <img src={image} alt="" width="200" />
+      <img src={image} alt={title} width="200" />
 
       <ProductCounter
         {...{
