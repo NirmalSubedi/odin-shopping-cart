@@ -10,7 +10,7 @@ it("shows welcome message", () => {
     </MemoryRouter>,
   );
 
-  expect(screen.getByText(/welcome/i)).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: /welcome/i })).toBeInTheDocument();
 });
 
 it("shows site description", () => {
@@ -30,7 +30,9 @@ it("shows instructions", () => {
     </MemoryRouter>,
   );
 
-  expect(screen.getByText(/get started/i)).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { name: /get started/i }),
+  ).toBeInTheDocument();
   expect(screen.getByText(/by adding/i)).toBeInTheDocument();
   expect(screen.getByText(/then adjusting/i)).toBeInTheDocument();
 });

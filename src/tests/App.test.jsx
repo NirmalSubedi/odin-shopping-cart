@@ -137,8 +137,12 @@ it("shows added product in cart at the Cart page", async () => {
   await user.click(addToCartBtns[CARROT]);
   await user.click(Get.cartPageLink());
 
-  expect(screen.queryByAltText(products[CARROT].title)).toBeInTheDocument();
-  expect(screen.queryByAltText(products[DURIAN].title)).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole("img", { name: products[CARROT].title }),
+  ).toBeInTheDocument();
+  expect(
+    screen.queryByRole("img", { name: products[DURIAN].title }),
+  ).not.toBeInTheDocument();
 });
 
 it("increases cart total when products are added to cart", async () => {

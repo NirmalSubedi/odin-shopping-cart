@@ -12,25 +12,25 @@ it("shows quantity input label", () => {
 
 it("links quantity label to quantity input", () => {
   render(<ProductCounter {...{ id: 1 }} />);
-  const labelText = /^quantity$/i;
-  const inputIdentifier = screen.getByText(labelText).getAttribute("for");
 
-  expect(inputIdentifier).not.toBeNull();
-  expect(screen.getByLabelText(labelText)).toHaveAttribute(
-    "id",
-    inputIdentifier,
+  expect(screen.queryByLabelText(/^quantity$/i)).not.toBeNull();
+});
+
+it("shows the currentQuantity prop value as quantity input value", () => {
+  const currentQuantity = 2;
+  render(<ProductCounter {...{ currentQuantity }} />);
+
+  expect(screen.getByRole("spinbutton", { name: /quantity/i })).toHaveValue(
+    currentQuantity,
   );
 });
 
-it("shows the currentQuantity prop as quantity input value", () => {
-  render(<ProductCounter {...{ currentQuantity: 2 }} />);
-
-  expect(screen.getByRole("spinbutton", { name: /quantity/i })).toHaveValue(2);
-});
-
 it("disables decrease button when currentQuantity is same value as minimum quantity", () => {
-  render(<ProductCounter {...{ currentQuantity: 1, minQuantity: 1 }} />);
+  const currentQuantity = 1;
+  const minQuantity = 1;
+  render(<ProductCounter {...{ currentQuantity, minQuantity }} />);
 
+  expect(currentQuantity).toBe(minQuantity);
   expect(
     screen.getByRole("button", { name: /decrease quantity/i }),
   ).toBeDisabled();
@@ -60,7 +60,9 @@ it("calls onQuantityDecrease prop when pressing the decrease button", async () =
 
   render(<ProductCounter {...{ onQuantityDecrease }} />);
 
-  await userEvent.setup().click(screen.getByText("-"));
+  await userEvent
+    .setup()
+    .click(screen.getByRole("button", { name: /decrease quantity/i }));
 
   expect(onQuantityDecrease).toHaveBeenCalledOnce();
 });

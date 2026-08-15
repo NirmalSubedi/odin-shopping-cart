@@ -7,7 +7,9 @@ it("shows product text information", () => {
   const product = { title: "Apple", description: "A red fruit grown on trees" };
   render(<ProductCard {...{ product }} />);
 
-  expect(screen.getByText(product.title)).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { name: product.title }),
+  ).toBeInTheDocument();
   expect(screen.getByText(product.description)).toBeInTheDocument();
 });
 

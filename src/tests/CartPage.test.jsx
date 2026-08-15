@@ -22,7 +22,9 @@ it("shows content for empty cart", () => {
     </reactRouter.MemoryRouter>,
   );
 
-  expect(screen.getByText(/shopping cart is empty/i)).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { name: /shopping cart is empty/i }),
+  ).toBeInTheDocument();
 });
 
 it("shows content for non-empty cart", () => {

@@ -62,8 +62,11 @@ it("shows products when they are loaded", () => {
     </reactRouter.MemoryRouter>,
   );
 
-  expect(screen.getByText(/apple/i)).toBeInTheDocument();
-  expect(screen.getByText(/banana/i)).toBeInTheDocument();
+  context.products.forEach((product) =>
+    expect(
+      screen.getByRole("heading", { name: product.title }),
+    ).toBeInTheDocument(),
+  );
 });
 
 it("focus h1 tag when loaded", () => {
