@@ -7,7 +7,7 @@ it("shows product image with correct attributes", () => {
   const product = { image: "apple.png", quantity: 1, title: "A red apple" };
   render(<CartProduct {...{ product }} />);
 
-  const image = screen.getByRole("presentation");
+  const image = screen.getByRole("img", { name: product.title });
 
   expect(image).toBeInTheDocument();
   expect(image).toHaveAttribute("src", product.image);

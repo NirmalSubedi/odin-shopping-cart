@@ -12,17 +12,17 @@ export const NavBar = ({ products }) => {
         style={{ display: "flex", gap: "1em", listStyle: "none", padding: 0 }}
       >
         <li>
-          <NavLink to="/" aria-label="go to home page" style={styleNavLink}>
+          <NavLink to="/" style={styleNavLink}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shop" aria-label="go to shop page" style={styleNavLink}>
+          <NavLink to="/shop" style={styleNavLink}>
             Shop
           </NavLink>
         </li>
         <li>
-          <NavLink to="/cart" aria-label="go to cart page" style={styleNavLink}>
+          <NavLink to="/cart" style={styleNavLink}>
             <CartPreview {...{ products }} />
           </NavLink>
         </li>

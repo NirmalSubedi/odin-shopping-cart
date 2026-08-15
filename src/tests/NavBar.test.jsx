@@ -11,7 +11,7 @@ it("shows home link", () => {
     </MemoryRouter>,
   );
 
-  const link = screen.getByRole("link", { name: /go to home page/i });
+  const link = screen.getByRole("link", { name: /home/i });
   expect(link).toBeInTheDocument();
   expect(link).toHaveAttribute("href", "/");
 });
@@ -23,7 +23,7 @@ it("shows shop link", () => {
     </MemoryRouter>,
   );
 
-  const link = screen.getByRole("link", { name: /go to shop page/i });
+  const link = screen.getByRole("link", { name: /shop/i });
   expect(link).toBeInTheDocument();
   expect(link).toHaveAttribute("href", "/shop");
 });
@@ -35,7 +35,7 @@ it("shows shop link", () => {
     </MemoryRouter>,
   );
 
-  const link = screen.getByRole("link", { name: /go to cart page/i });
+  const link = screen.getByRole("link", { name: /cart/i });
   expect(link).toBeInTheDocument();
   expect(link).toHaveAttribute("href", "/cart");
 });
@@ -48,7 +48,7 @@ it("shows total products in cart", () => {
     </MemoryRouter>,
   );
 
-  const link = screen.getByRole("link", { name: /go to cart page/i });
+  const link = screen.getByRole("link", { name: /cart/i });
   expect(link).toContainAnyByText(/6/);
 });
 
@@ -60,7 +60,7 @@ it("shows 0 total products in cart when empty", () => {
     </MemoryRouter>,
   );
 
-  const link = screen.getByRole("link", { name: /go to cart page/i });
+  const link = screen.getByRole("link", { name: /cart/i });
   expect(link).toContainAnyByText(/0/);
 });
 
@@ -71,8 +71,8 @@ it("applies active class to home page link by default", () => {
     </MemoryRouter>,
   );
 
-  const homeLink = screen.getByRole("link", { name: /go to home page/i });
-  const cartLink = screen.getByRole("link", { name: /go to cart page/i });
+  const homeLink = screen.getByRole("link", { name: /home/i });
+  const cartLink = screen.getByRole("link", { name: /cart/i });
   expect(homeLink).toHaveClass("active");
   expect(cartLink).not.toHaveClass("active");
 });
@@ -84,8 +84,8 @@ it("applies active class to shop page link when navigating to it", () => {
     </MemoryRouter>,
   );
 
-  const homeLink = screen.getByRole("link", { name: /go to home page/i });
-  const shopLink = screen.getByRole("link", { name: /go to shop page/i });
+  const homeLink = screen.getByRole("link", { name: /home/i });
+  const shopLink = screen.getByRole("link", { name: /shop/i });
   expect(homeLink).not.toHaveClass("active");
   expect(shopLink).toHaveClass("active");
 });
@@ -96,8 +96,8 @@ it("applies active class to page link when user click on it", async () => {
       <NavBar />
     </MemoryRouter>,
   );
-  const cartLink = screen.getByRole("link", { name: /go to cart page/i });
-  const homeLink = screen.getByRole("link", { name: /go to home page/i });
+  const cartLink = screen.getByRole("link", { name: /cart/i });
+  const homeLink = screen.getByRole("link", { name: /home/i });
 
   await userEvent.setup().click(cartLink);
 

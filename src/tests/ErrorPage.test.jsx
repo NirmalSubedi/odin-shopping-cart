@@ -21,7 +21,7 @@ it("shows link to home page", () => {
       <ErrorPage />
     </MemoryRouter>,
   );
-  const link = screen.getByRole("link", { name: /go to home page/i });
+  const link = screen.getByRole("link", { name: /home/i });
 
   expect(link).toBeInTheDocument();
   expect(link).toHaveAttribute("href", "/");

@@ -50,9 +50,9 @@ const setup = (initialEntries = ["/"], products, isResolve = true) => {
 const Get = {
   loading: () => screen.getByText(/loading/i),
   quantityInput: () => screen.getByRole("spinbutton", { name: /quantity/i }),
-  cartPageLink: () => screen.getByRole("link", { name: /go to cart page/i }),
-  shopPageLink: () => screen.getByRole("link", { name: /go to shop page/i }),
-  homePageLink: () => screen.getByRole("link", { name: /go to home page/i }),
+  cartPageLink: () => screen.getByRole("link", { name: /cart/i }),
+  shopPageLink: () => screen.getByRole("link", { name: /shop/i }),
+  homePageLink: () => screen.getByRole("link", { name: /home/i }),
   decreaseBtn: () => screen.getByRole("button", { name: /decrease quantity/i }),
   increaseBtn: () => screen.getByRole("button", { name: /increase quantity/i }),
   addToCartBtn: () => screen.getByRole("button", { name: /add to cart/i }),
