@@ -22,7 +22,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
         alt=""
         style={{ maxWidth: "200px", display: "block", width: "100%" }}
       />
-      <h3 className="product-title">{title}</h3>
+      <h2 className="product-title">{title}</h2>
       <p>{description}</p>
 
       <ProductCounter

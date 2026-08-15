@@ -3,7 +3,7 @@ import { CartPreview } from "./index.jsx";
 
 export const NavBar = ({ products }) => {
   const styleNavLink = ({ isActive }) => ({
-    color: isActive ? "red" : "",
+    color: isActive ? "#b50000" : "",
   });
 
   return (
