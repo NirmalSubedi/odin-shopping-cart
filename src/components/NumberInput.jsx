@@ -1,3 +1,5 @@
+import styles from "../styles/NumberInput.module.css";
+
 export const NumberInput = ({ onChange, min, value, name }) => (
   <input
     {...{
@@ -7,7 +9,7 @@ export const NumberInput = ({ onChange, min, value, name }) => (
       value,
       min,
       onChange,
-      style: { maxWidth: "4ch", width: "100%" },
+      className: styles.numberInput,
     }}
   />
 );

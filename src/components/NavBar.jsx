@@ -1,28 +1,25 @@
 import { NavLink } from "react-router";
 import { CartPreview } from "./index.jsx";
+import styles from "../styles/NavBar.module.css";
 
 export const NavBar = ({ products }) => {
-  const styleNavLink = ({ isActive }) => ({
-    color: isActive ? "#b50000" : "",
-  });
+  const getClass = ({ isActive }) => (isActive ? styles.active : "");
 
   return (
     <nav>
-      <ul
-        style={{ display: "flex", gap: "1em", listStyle: "none", padding: 0 }}
-      >
+      <ul className={styles.ul}>
         <li>
-          <NavLink to="/" style={styleNavLink}>
+          <NavLink to="/" className={getClass}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shop" style={styleNavLink}>
+          <NavLink to="/shop" className={getClass}>
             Shop
           </NavLink>
         </li>
         <li>
-          <NavLink to="/cart" style={styleNavLink}>
+          <NavLink to="/cart" className={getClass}>
             <CartPreview {...{ products }} />
           </NavLink>
         </li>

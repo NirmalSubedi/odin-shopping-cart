@@ -1,3 +1,4 @@
+import styles from "../styles/ProductCard.module.css";
 import { MINIMUM_QUANTITY } from "../config.js";
 import { useAnnouncement, useCounter } from "./hooks/index.jsx";
 import { LiveRegion, ProductCounter } from "./index.jsx";
@@ -17,11 +18,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
 
   return (
     <section className="product">
-      <img
-        src={image}
-        alt=""
-        style={{ maxWidth: "200px", display: "block", width: "100%" }}
-      />
+      <img src={image} alt="" className={styles.img} />
       <h2 className="product-title">{title}</h2>
       <p>{description}</p>
 

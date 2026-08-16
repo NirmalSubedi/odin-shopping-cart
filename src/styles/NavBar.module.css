@@ -1,0 +1,10 @@
+.active {
+  color: #b50000;
+}
+
+.ul {
+  display: flex;
+  gap: 1em;
+  list-style: none;
+  padding: 0;
+}

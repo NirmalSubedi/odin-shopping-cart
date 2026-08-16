@@ -9,8 +9,6 @@ export const ShopPage = () => {
   const { products, setProducts, productsError, productsLoading } =
     useOutletContext();
 
-  console.log(styles);
-
   const onAddToCart = createCartUpdater(products, setProducts);
 
   if (productsLoading) return <p className="loading">Loading Products...</p>;

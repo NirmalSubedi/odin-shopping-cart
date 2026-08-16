@@ -5,8 +5,6 @@ import { useFocus } from "./hooks";
 export const ErrorPage = () => {
   useFocus();
 
-  console.log(styles);
-
   return (
     <>
       <h1>Page Not Found (404)</h1>

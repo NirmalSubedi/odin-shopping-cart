@@ -1,3 +1,4 @@
+import styles from "../styles/CartProduct.module.css";
 import { MINIMUM_QUANTITY } from "../config.js";
 import { getValidProductQuantity } from "../utils/index.js";
 import { useCounter } from "./hooks/index.jsx";
@@ -24,7 +25,7 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
 
   return (
     <div className="product">
-      <img src={image} alt={title} width="200" />
+      <img src={image} alt={title} className={styles.img} />
 
       <ProductCounter
         {...{

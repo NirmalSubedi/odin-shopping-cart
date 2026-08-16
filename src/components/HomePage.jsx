@@ -2,12 +2,11 @@ import styles from "../styles/HomePage.module.css";
 import { useFocus } from "./hooks";
 
 export const HomePage = () => {
-  console.log(styles);
   useFocus();
 
   return (
     <>
-      <main style={{ textAlign: "center" }}>
+      <main className={styles.main}>
         <h1 aria-describedby="desc">
           Welcome! <span aria-hidden="true">👋</span>
         </h1>

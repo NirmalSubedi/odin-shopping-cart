@@ -22,10 +22,9 @@ export const CartPage = () => {
   const productsInCart = products.filter((product) => product.quantity > 0);
   const hasProductsInCart = productsInCart.length > 0;
 
-  console.log(styles);
   return (
     <>
-      <main style={{ textAlign: "center" }}>
+      <main className={styles.main}>
         {!hasProductsInCart && (
           <>
             <h1>
