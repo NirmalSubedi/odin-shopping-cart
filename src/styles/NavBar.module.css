@@ -1,10 +1,46 @@
 .active {
-  color: #b50000;
+  color: var(--nav-current-link);
+}
+
+.nav {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background-color: var(--bg);
 }
 
 .ul {
   display: flex;
-  gap: 1em;
+  justify-content: space-evenly;
   list-style: none;
   padding: 0;
+}
+
+.ul > * {
+  flex: 1 1 0px;
+  text-align: center;
+}
+
+.ul > *:hover {
+  background-color: var(--bg-h);
+}
+
+.a {
+  display: block;
+  padding: 1rem 0;
+
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.a:focus,
+.a:hover {
+  text-decoration: underline;
+}
+
+.a:active {
+  color: var(--nav-active-link);
 }

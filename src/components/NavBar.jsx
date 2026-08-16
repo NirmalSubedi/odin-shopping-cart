@@ -3,12 +3,16 @@ import { CartPreview } from "./index.jsx";
 import styles from "../styles/NavBar.module.css";
 
 export const NavBar = ({ products }) => {
-  const getClass = ({ isActive }) => (isActive ? styles.active : "");
+  const getClass = ({ isActive }) => {
+    const classes = [styles.a];
+    if (isActive) classes.push(styles.active);
+    return classes.join(" ");
+  };
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul className={styles.ul}>
-        <li>
+        <li className={styles.li}>
           <NavLink to="/" className={getClass}>
             Home
           </NavLink>
