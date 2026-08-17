@@ -1,8 +1,7 @@
-export const CartPreview = ({ products = [] }) => {
-  const totalProducts = products.reduce(
-    (sum, product) => (product.quantity ?? 0) + sum,
-    0,
+export const CartPreview = ({ totalProducts }) => {
+  return (
+    <>
+      Cart <span aria-hidden="true">({totalProducts})</span>
+    </>
   );
-
-  return `Cart (${totalProducts})`;
 };

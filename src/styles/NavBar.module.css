@@ -1,12 +1,10 @@
-.active {
-  color: var(--nav-current-link);
-}
-
 .nav {
   position: sticky;
   z-index: 1;
   top: 0;
   background-color: var(--bg);
+  border-bottom: 1px solid var(--text-muted);
+  margin-bottom: 3rem;
 }
 
 .ul {
@@ -21,6 +19,10 @@
   flex: 1 0 0;
   min-width: max-content;
   text-align: center;
+}
+
+.ul > *:not(:first-child) {
+  border-left: 1px solid var(--text-muted);
 }
 
 .ul > *:hover {
@@ -45,4 +47,8 @@
 
 .a:active {
   color: var(--nav-active-link);
+}
+
+.active {
+  color: var(--nav-current-link);
 }

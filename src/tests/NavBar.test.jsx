@@ -29,7 +29,7 @@ it("shows shop link", () => {
   expect(link).toHaveAttribute("href", "/shop");
 });
 
-it("shows shop link", () => {
+it("shows cart link", () => {
   render(
     <MemoryRouter>
       <NavBar />
@@ -63,6 +63,53 @@ it("shows 0 total products in cart when empty", () => {
 
   const link = screen.getByRole("link", { name: /cart/i });
   expect(link).toContainAnyByText(/0/);
+});
+
+it("shows cart with '0' value when empty", () => {
+  const products = [];
+  render(
+    <MemoryRouter>
+      <NavBar {...{ products }} />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByRole("link", { name: /cart/i })).toHaveTextContent(/0/i);
+});
+
+it("shows cart with value 1 for one product in cart", () => {
+  const products = [{ quantity: 1 }];
+  render(
+    <MemoryRouter>
+      <NavBar {...{ products }} />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByRole("link", { name: /cart/i })).toHaveTextContent(/1/i);
+});
+
+it("shows cart with value that is the sum of all product quantities", () => {
+  const products = [{ quantity: 1 }, { quantity: 2 }, { quantity: 3 }];
+
+  render(
+    <MemoryRouter>
+      <NavBar {...{ products }} />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByRole("link", { name: /cart/i })).toHaveTextContent(/6/i);
+});
+
+it("shows cart link with accessible description", () => {
+  const products = [{ quantity: 1 }, { quantity: 2 }, { quantity: 3 }];
+  render(
+    <MemoryRouter>
+      <NavBar {...{ products }} />
+    </MemoryRouter>,
+  );
+
+  expect(
+    screen.getByRole("link", { name: /cart/i }),
+  ).toHaveAccessibleDescription(/6 products in cart/i);
 });
 
 it("applies active class to home page link by default", () => {
