@@ -30,6 +30,25 @@ it("shows quantity input with '1' value", () => {
   expect(screen.getByRole("spinbutton", { name: /quantity/i })).toHaveValue(1);
 });
 
+it("toggles show details button text on click", async () => {
+  const user = userEvent.setup();
+  render(<ProductCard {...{ product: {} }} />);
+  const button = screen.getByText(/details/i);
+
+  expect(button).toHaveTextContent(/show/i);
+  expect(button).not.toHaveTextContent(/hide/i);
+
+  await user.click(button);
+
+  expect(button).not.toHaveTextContent(/show/i);
+  expect(button).toHaveTextContent(/hide/i);
+
+  await user.click(button);
+
+  expect(button).toHaveTextContent(/show/i);
+  expect(button).not.toHaveTextContent(/hide/i);
+});
+
 it("updates currentQuantity value on quantity input change", async () => {
   render(<ProductCard {...{ product: { quantity: 1 } }} />);
 

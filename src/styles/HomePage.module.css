@@ -3,7 +3,7 @@
   display: grid;
   place-content: start center;
   text-align: center;
-  padding: 3rem 1rem 0;
+  padding: 0 1rem;
   gap: 1rem;
 }
 

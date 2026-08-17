@@ -1,4 +1,8 @@
 .numberInput {
-  max-width: 4ch;
+  background-color: var(--bg);
+  border: 1px solid var(--text-muted);
+
+  font-size: var(--fs-base);
+  max-width: 5ch;
   width: 100%;
 }

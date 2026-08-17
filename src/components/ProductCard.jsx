@@ -3,6 +3,7 @@ import { MINIMUM_QUANTITY } from "../config.js";
 import { useAnnouncement, useCounter } from "./hooks/index.jsx";
 import { LiveRegion, ProductCounter } from "./index.jsx";
 import { getValidProductQuantity } from "../utils/index.js";
+import { useState } from "react";
 
 export const ProductCard = ({ product, onAddToCart }) => {
   const { title, id, description, image, quantity } = product;
@@ -10,39 +11,68 @@ export const ProductCard = ({ product, onAddToCart }) => {
     quantity || MINIMUM_QUANTITY,
   );
   const { announcement, updateAnnouncement } = useAnnouncement();
+  const [isHidingDetails, setIsHidingDetails] = useState(true);
 
+  const onDetailsToggle = () => setIsHidingDetails(!isHidingDetails);
   const onQuantityIncrease = () => increaseCount();
   const onQuantityDecrease = () =>
     count > MINIMUM_QUANTITY ? decreaseCount() : MINIMUM_QUANTITY;
   const onQuantityChange = (e) => setCount(getValidProductQuantity(e));
 
   return (
-    <section className="product">
-      <img src={image} alt="" className={styles.img} />
-      <h2 className="product-title">{title}</h2>
-      <p>{description}</p>
+    <section className={styles.product}>
+      <div className={styles.imageBox}>
+        <img
+          src={image}
+          alt=""
+          className={styles.img}
+          width="200"
+          height="200"
+        />
+      </div>
+      <h2 className={styles.title}>{title}</h2>
 
-      <ProductCounter
-        {...{
-          id,
-          currentQuantity: count,
-          onQuantityIncrease,
-          onQuantityDecrease,
-          onQuantityChange,
-          minQuantity: MINIMUM_QUANTITY,
-        }}
-      />
-      <LiveRegion {...{ announcement, testId: "cart-live-region" }}>
+      <div className={styles.descriptionBox}>
+        <p
+          className={`${styles.description} ${isHidingDetails && styles.lessDescription}`}
+        >
+          {description}
+        </p>
         <button
           type="button"
-          onClick={() => {
-            updateAnnouncement(`Added ${quantity} ${title} to cart`);
-            onAddToCart(product, count);
-          }}
+          className={styles.showDetailsBtn}
+          onClick={onDetailsToggle}
+          aria-hidden="true"
         >
-          Add To Cart
+          {isHidingDetails ? "show" : "hide"} details
         </button>
-      </LiveRegion>
+      </div>
+
+      <div className={styles.controlLayout}>
+        <ProductCounter
+          {...{
+            id,
+            currentQuantity: count,
+            onQuantityIncrease,
+            onQuantityDecrease,
+            onQuantityChange,
+            minQuantity: MINIMUM_QUANTITY,
+          }}
+        />
+
+        <LiveRegion {...{ announcement, testId: "cart-live-region" }}>
+          <button
+            type="button"
+            className={styles.addToCartBtn}
+            onClick={() => {
+              updateAnnouncement(`Added ${quantity} ${title} to cart`);
+              onAddToCart(product, count);
+            }}
+          >
+            Add To Cart
+          </button>
+        </LiveRegion>
+      </div>
     </section>
   );
 };

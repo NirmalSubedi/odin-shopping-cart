@@ -21,8 +21,8 @@ export const ShopPage = () => {
 
   return (
     <>
-      <main>
-        <h1>Products of the Week:</h1>
+      <h1 className={styles.h1}>Products of the Week</h1>
+      <main className={styles.main}>
         {products.map((product) => {
           return <ProductCard key={product.id} {...{ product, onAddToCart }} />;
         })}
