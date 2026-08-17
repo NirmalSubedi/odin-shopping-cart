@@ -1,3 +1,4 @@
+import styles from "../styles/NavBar.module.css";
 import { render, screen } from "@testing-library/react";
 import { expect, it } from "vitest";
 import { NavBar } from "../components";
@@ -73,8 +74,8 @@ it("applies active class to home page link by default", () => {
 
   const homeLink = screen.getByRole("link", { name: /home/i });
   const cartLink = screen.getByRole("link", { name: /cart/i });
-  expect(homeLink).toHaveClass("active");
-  expect(cartLink).not.toHaveClass("active");
+  expect(homeLink).toHaveClass(styles.active);
+  expect(cartLink).not.toHaveClass(styles.active);
 });
 
 it("applies active class to shop page link when navigating to it", () => {
@@ -86,8 +87,8 @@ it("applies active class to shop page link when navigating to it", () => {
 
   const homeLink = screen.getByRole("link", { name: /home/i });
   const shopLink = screen.getByRole("link", { name: /shop/i });
-  expect(homeLink).not.toHaveClass("active");
-  expect(shopLink).toHaveClass("active");
+  expect(homeLink).not.toHaveClass(styles.active);
+  expect(shopLink).toHaveClass(styles.active);
 });
 
 it("applies active class to page link when user click on it", async () => {
@@ -101,6 +102,6 @@ it("applies active class to page link when user click on it", async () => {
 
   await userEvent.setup().click(cartLink);
 
-  expect(homeLink).not.toHaveClass("active");
-  expect(cartLink).toHaveClass("active");
+  expect(homeLink).not.toHaveClass(styles.active);
+  expect(cartLink).toHaveClass(styles.active);
 });
