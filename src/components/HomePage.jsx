@@ -20,11 +20,11 @@ export const HomePage = () => {
         <div className={`${styles.textBody}`}>
           <p>
             By adding products into your shopping cart in the{" "}
-            <strong>Shop</strong> page..
+            <strong className={styles.navLinkRef}>Shop</strong> page..
           </p>
           <p>
             ..then adjusting product quantity or removing products in the{" "}
-            <strong>Cart</strong> page.
+            <strong className={styles.navLinkRef}>Cart</strong> page.
           </p>
         </div>
       </main>

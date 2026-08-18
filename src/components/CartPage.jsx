@@ -27,11 +27,12 @@ export const CartPage = () => {
       <main className={styles.main}>
         {!hasProductsInCart && (
           <>
-            <h1>
+            <h1 className={styles.h1}>
               Shopping cart is empty <span aria-hidden="true">🍃</span>..
             </h1>
-            <p>
-              ..Fill up your shopping cart at the <strong>Shop</strong> page.
+            <p className={styles.p}>
+              ..Fill up your shopping cart at the{" "}
+              <strong className={styles.navLinkRef}>Shop</strong> page.
             </p>
           </>
         )}

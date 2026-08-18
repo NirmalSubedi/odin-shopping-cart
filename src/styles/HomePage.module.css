@@ -28,3 +28,8 @@
   font-size: var(--fs-base);
   font-weight: 400;
 }
+
+.navLinkRef {
+  text-transform: uppercase;
+  color: var(--accent);
+}
