@@ -5,11 +5,11 @@
   --bg-h: #eee;
   --secondary: #03bd03;
   --accent: #74458a;
-  --nav-active-link: #b50000;
+  --red: #b50000;
+  --nav-active-link: var(--red);
   --nav-current-link: var(--accent);
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   --fs-scale: 1.15;
@@ -49,7 +49,8 @@
     --bg-h: #1f2129;
     --secondary: #016701;
     --accent: #d67fff;
-    --nav-active-link: #ff7a7a;
+    --red: #ff7a7a;
+    --nav-active-link: var(--red);
   }
 }
 

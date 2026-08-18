@@ -17,3 +17,29 @@
   text-transform: uppercase;
   color: var(--accent);
 }
+
+.productsMain {
+  padding: 0 0.5rem 1rem;
+}
+
+.totalProducts {
+  color: var(--accent);
+  font-size: var(--fs-h1);
+}
+
+.productsH1 {
+  grid-column: 1/-1;
+  text-align: center;
+
+  font-size: var(--fs-h5);
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  padding-bottom: 1rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 200px));
+  gap: 1rem;
+  justify-content: center;
+}

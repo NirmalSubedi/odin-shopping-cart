@@ -21,25 +21,34 @@ export const CartPage = () => {
 
   const productsInCart = products.filter((product) => product.quantity > 0);
   const hasProductsInCart = productsInCart.length > 0;
+  const totalProductsInCart = productsInCart.reduce(
+    (sum, prod) => sum + prod.quantity,
+    0,
+  );
 
   return (
     <>
-      <main className={styles.main}>
-        {!hasProductsInCart && (
-          <>
-            <h1 className={styles.h1}>
-              Shopping cart is empty <span aria-hidden="true">🍃</span>..
-            </h1>
-            <p className={styles.p}>
-              ..Fill up your shopping cart at the{" "}
-              <strong className={styles.navLinkRef}>Shop</strong> page.
-            </p>
-          </>
-        )}
+      {!hasProductsInCart && (
+        <main
+          className={`${styles.main} ${hasProductsInCart ? styles.products : ""}`}
+        >
+          <h1 className={styles.h1}>
+            Shopping cart is empty <span aria-hidden="true">🍃</span>..
+          </h1>
+          <p className={styles.p}>
+            ..Fill up your shopping cart at the{" "}
+            <strong className={styles.navLinkRef}>Shop</strong> page.
+          </p>
+        </main>
+      )}
 
-        {hasProductsInCart && (
-          <>
-            <h1>Products In Shopping Cart:</h1>
+      {hasProductsInCart && (
+        <main className={styles.productsMain}>
+          <h1 className={styles.productsH1}>
+            <span className={styles.totalProducts}>{totalProductsInCart}</span>{" "}
+            Products In Cart:
+          </h1>
+          <div className={styles.products}>
             {productsInCart.map((product) => (
               <CartProduct
                 key={product.id}
@@ -50,9 +59,9 @@ export const CartPage = () => {
                 }}
               />
             ))}
-          </>
-        )}
-      </main>
+          </div>
+        </main>
+      )}
     </>
   );
 };

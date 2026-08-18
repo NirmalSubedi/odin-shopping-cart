@@ -1,5 +1,37 @@
+.product {
+  display: grid;
+  padding-top: 1rem;
+  gap: 0.75rem;
+  border: 1px solid var(--text-muted);
+  background: linear-gradient(135deg, var(--bg), var(--bg-h), var(--bg));
+}
+
+.product > *:not(.removeProductBtn) {
+  padding: 0 0.5rem;
+}
+
+.product label {
+  text-align: center;
+}
+
+.imageBox {
+  display: grid;
+  place-content: center;
+}
+
 .img {
-  display: block;
-  max-width: 200px;
-  width: 100%;
+  object-fit: contain;
+}
+
+.removeProductBtn {
+  background-color: transparent;
+  border: none;
+  font-weight: 400;
+  font-size: var(--fs-xsm);
+  padding: 0.5rem 0;
+}
+
+.removeProductBtn:hover {
+  color: var(--red);
+  cursor: pointer;
 }

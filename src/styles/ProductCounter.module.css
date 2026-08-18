@@ -1,9 +1,11 @@
 .productCounter {
   justify-self: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
 }
 
 .label {
-  display: block;
+  grid-column: 1/-1;
   font-size: var(--fs-xsm);
 }
 
@@ -17,7 +19,7 @@
 }
 
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .btn:hover:not(:disabled) {
@@ -31,8 +33,16 @@
   border-left: 0;
 }
 
+.increaseBtn:active:not(:disabled) {
+  transform: scaleY(1.1);
+}
+
 .decreaseBtn {
   composes: btn;
   border-radius: var(--br) 0 0 var(--br);
   border-right: 0;
+}
+
+.decreaseBtn:active:not(:disabled) {
+  transform: scaleY(0.9);
 }

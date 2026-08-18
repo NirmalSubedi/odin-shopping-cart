@@ -38,7 +38,7 @@ it("shows content for non-empty cart", () => {
   );
 
   expect(
-    screen.getByRole("heading", { name: /products in shopping cart/i }),
+    screen.getByRole("heading", { name: /products in cart/i }),
   ).toBeInTheDocument();
 });
 
@@ -53,7 +53,7 @@ it("focus h1 tag when loaded", () => {
   );
 
   const h1 = screen.getByRole("heading", {
-    name: /products in shopping cart/i,
+    name: /products in cart/i,
     level: 1,
   });
 

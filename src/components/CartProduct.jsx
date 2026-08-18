@@ -24,8 +24,16 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
   };
 
   return (
-    <div className="product">
-      <img src={image} alt={title} className={styles.img} />
+    <div className={styles.product}>
+      <div className={styles.imageBox}>
+        <img
+          src={image}
+          alt={title}
+          className={styles.img}
+          width="100"
+          height="100"
+        />
+      </div>
 
       <ProductCounter
         {...{
@@ -39,11 +47,12 @@ export const CartProduct = ({ product, onProductRemove, onCartUpdate }) => {
       />
 
       <button
-        aria-label="Remove product From Cart"
         type="button"
+        aria-label="Remove product From Cart"
+        className={styles.removeProductBtn}
         onClick={() => onProductRemove(product)}
       >
-        Remove Product
+        Remove
       </button>
     </div>
   );
