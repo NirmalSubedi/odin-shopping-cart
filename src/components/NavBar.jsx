@@ -29,7 +29,7 @@ export const NavBar = ({ products = [] }) => {
         </li>
         <li>
           <NavLink to="/cart" className={getClass} aria-describedby="cart-desc">
-            <CartPreview {...{ totalProducts }} />
+            <CartPreview key={totalProducts} {...{ totalProducts }} />
             <span id="cart-desc" aria-hidden={true} className="sr-only">
               {totalProducts} products in cart!
             </span>

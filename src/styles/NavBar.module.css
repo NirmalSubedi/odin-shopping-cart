@@ -8,17 +8,19 @@
 }
 
 .ul {
+  padding: 0;
+  list-style: none;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  list-style: none;
-  padding: 0;
 }
 
 .ul > * {
   flex: 1 0 0;
-  min-width: max-content;
   text-align: center;
+
+  display: grid;
 }
 
 .ul > *:not(:first-child) {
@@ -30,14 +32,17 @@
 }
 
 .a {
-  display: block;
-  padding: 1rem 0.5rem;
-
-  text-decoration: none;
   color: var(--text);
+  text-transform: uppercase;
+  text-decoration: none;
   font-weight: bold;
   font-size: var(--fs-sm);
-  text-transform: uppercase;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .a:focus,

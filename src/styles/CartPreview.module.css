@@ -1,0 +1,29 @@
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.itemsCount {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--text);
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.slideIn {
+  animation: slideIn 1s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideIn {
+    animation-duration: 0ms;
+  }
+}
