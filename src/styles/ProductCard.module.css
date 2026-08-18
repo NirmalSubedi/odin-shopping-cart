@@ -8,6 +8,11 @@
   border: 2px solid var(--text-muted);
 }
 
+.productInCart {
+  border-radius: 0;
+  border-color: var(--secondary);
+}
+
 .product > *:not(.imageBox) {
   margin: 0 1rem;
 }

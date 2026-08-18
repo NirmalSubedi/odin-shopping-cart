@@ -12,6 +12,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
   );
   const { announcement, updateAnnouncement } = useAnnouncement();
   const [isHidingDetails, setIsHidingDetails] = useState(true);
+  const isInCart = quantity > 0;
 
   const onDetailsToggle = () => setIsHidingDetails(!isHidingDetails);
   const onQuantityIncrease = () => increaseCount();
@@ -20,7 +21,9 @@ export const ProductCard = ({ product, onAddToCart }) => {
   const onQuantityChange = (e) => setCount(getValidProductQuantity(e));
 
   return (
-    <section className={styles.product}>
+    <section
+      className={`${styles.product} ${isInCart ? styles.productInCart : ""}`}
+    >
       <div className={styles.imageBox}>
         <img
           src={image}
