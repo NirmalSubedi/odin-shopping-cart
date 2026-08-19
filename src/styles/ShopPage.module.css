@@ -17,3 +17,65 @@
   line-height: 1.4;
   text-decoration: underline wavy var(--accent) 3px;
 }
+
+.loadingBox {
+  display: grid;
+  place-items: center;
+}
+
+.loading {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: var(--fs-h4);
+  color: var(--text-muted);
+}
+
+.loading::before {
+  --size: 30px;
+
+  content: "";
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  border: 10px dotted var(--accent);
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    rotate: 1turn;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading::before {
+    animation-duration: 10s;
+  }
+}
+
+.productsError {
+  color: var(--red);
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.productsError::before {
+  content: "!";
+  place-self: center;
+  border-radius: 50%;
+  border: 4px solid var(--red);
+
+  display: grid;
+  place-content: center;
+  width: 10px;
+  height: 10px;
+  padding: 0.75rem;
+  font-size: var(--fs-base);
+  font-weight: 700;
+}
+
+.productsError span {
+  color: var(--text-muted);
+}

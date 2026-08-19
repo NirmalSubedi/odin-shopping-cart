@@ -11,11 +11,17 @@ export const ShopPage = () => {
 
   const onAddToCart = createCartUpdater(products, setProducts);
 
-  if (productsLoading) return <p className="loading">Loading Products...</p>;
+  if (productsLoading)
+    return (
+      <div className={styles.loadingBox}>
+        <p className={styles.loading}>Loading Products...</p>
+      </div>
+    );
   if (productsError)
     return (
-      <p className="error products-error">
+      <p className={styles.productsError}>
         Error when loading: {productsError}
+        <span>Please try again later.</span>
       </p>
     );
 
