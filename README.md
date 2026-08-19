@@ -1,8 +1,8 @@
-# Shop Cart
+# Trolley Shop
 
 A mock store site to implement shopping cart.
 
-[Shop Now!](#)
+[Shop Now!](https://trolleyshop.netlify.app)
 
 ## Skills Demonstrated
 
