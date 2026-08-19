@@ -1,0 +1,22 @@
+.main {
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 1rem;
+  text-align: center;
+  font-size: var(--fs-h6);
+  color: var(--text-muted);
+}
+
+.link {
+  font-size: var(--fs-base);
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.link:active {
+  color: var(--nav-active-link);
+}

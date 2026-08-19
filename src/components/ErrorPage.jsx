@@ -6,9 +6,11 @@ export const ErrorPage = () => {
   useFocus();
 
   return (
-    <>
-      <h1>Page Not Found (404)</h1>
-      <Link to="/">Go To Home Page</Link>
-    </>
+    <main className={styles.main}>
+      <h1>(404) Page Not Found</h1>
+      <Link to="/" className={styles.link}>
+        Go To Home Page
+      </Link>
+    </main>
   );
 };
